@@ -1,0 +1,30 @@
+# Dataset (too large for GitHub — keep local)
+brain 1/
+brain1/
+data/train/**
+data/test/**
+!data/train/**/.gitkeep
+!data/test/**/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Outputs / logs (regenerable)
+outputs/*.png
+outputs/*.csv
+outputs/*.txt
+!outputs/.gitkeep
+
+# Notebooks checkpoints
+.ipynb_checkpoints/

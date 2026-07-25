@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroScan — Brain Tumor MRI Classifier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <main class="shell">
+    <header class="brand">
+      <p class="logo">NeuroScan</p>
+      <p class="tag">MRI tumor type detection · glioma · meningioma · pituitary · no tumor</p>
+    </header>
+
+    <section class="workspace">
+      <div class="upload-panel" id="dropzone">
+        <input type="file" id="fileInput" accept="image/*" hidden />
+        <div class="preview-wrap" id="previewWrap" hidden>
+          <img id="preview" alt="MRI preview" />
+        </div>
+        <div class="upload-hint" id="hint">
+          <p class="hint-title">Drop MRI image here</p>
+          <p class="hint-sub">or click to browse · JPG / PNG</p>
+        </div>
+        <button type="button" class="btn primary" id="browseBtn">Choose image</button>
+      </div>
+
+      <div class="result-panel" id="resultPanel">
+        <p class="panel-label">Prediction</p>
+        <div class="idle" id="idleState">
+          <p>Upload an MRI scan to classify tumor type.</p>
+        </div>
+        <div class="busy" id="busyState" hidden>
+          <div class="spinner"></div>
+          <p>Analyzing…</p>
+        </div>
+        <div class="done" id="doneState" hidden>
+          <p class="pred-class" id="predClass">—</p>
+          <p class="pred-conf" id="predConf">—</p>
+          <div class="bars" id="bars"></div>
+        </div>
+        <p class="error" id="errorState" hidden></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
