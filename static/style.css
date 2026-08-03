@@ -15,6 +15,9 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Fix: class display rules must not override HTML hidden */
+[hidden] { display: none !important; }
+
 body {
   min-height: 100vh;
   font-family: var(--font);
@@ -60,6 +63,28 @@ body {
   max-width: 36rem;
 }
 
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.status-pill .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--warn);
+}
+
+.status-pill.ready .dot { background: var(--accent); }
+.status-pill.error .dot { background: var(--danger); }
+
 .workspace {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -97,6 +122,11 @@ body {
   transform: scale(1.01);
 }
 
+.upload-panel.disabled {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
 .hint-title {
   font-family: var(--display);
   font-size: 1.7rem;
@@ -131,10 +161,11 @@ body {
   font: inherit;
   font-weight: 500;
   cursor: pointer;
-  transition: transform 0.15s, background 0.2s;
+  transition: transform 0.15s, background 0.2s, opacity 0.2s;
 }
 
 .btn:hover { transform: translateY(-1px); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 .btn.primary {
   background: var(--accent);
